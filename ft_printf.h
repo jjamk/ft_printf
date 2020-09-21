@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:47:55 by skang             #+#    #+#             */
-/*   Updated: 2020/09/21 14:59:03 by skang            ###   ########.fr       */
+/*   Updated: 2020/09/21 16:01:20 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ typedef struct		s_flags{
 	int				zero;
 	int				width;
 	int				precision;
-	char				type;
-}			t_flags;
+	char			type;
+}					t_flags;
 
 extern char			*g_specifier;
 extern char			*g_base_10;
 extern char			*g_base_16_x;
-extern char			*g_base_16_X;
-extern va_list			g_ap;
-extern t_flags			*g_format;
+extern char			*g_base_16_lx;
+extern va_list		g_ap;
+extern t_flags		*g_format;
 extern int			g_cnull;
 
-int				read_flags(const char **format);
-int				read_width(const char **format);
-int				read_precision(const char **format);
+int					read_flags(const char **format);
+int					read_width(const char **format);
+int					read_precision(const char **format);
 
 void				treat_c(char **str, char c);
 void				treat_s(char **str);

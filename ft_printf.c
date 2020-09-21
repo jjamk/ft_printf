@@ -6,7 +6,7 @@
 /*   By: skang <skang@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 14:48:50 by skang             #+#    #+#             */
-/*   Updated: 2020/09/21 14:58:45 by skang            ###   ########.fr       */
+/*   Updated: 2020/09/21 15:59:52 by skang            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 char			*g_specifier = "cspdiuxX%";
 char			*g_base_10 = "0123456789";
 char			*g_base_16_x = "0123456789abcdef";
-char			*g_base_16_X = "0123456789ABCDEF";
+char			*g_base_16_lx = "0123456789ABCDEF";
 t_flags			*g_format;
 va_list			g_ap;
-int			g_cnull;
+int				g_cnull;
 
 char			*get_format_string(void)
 {
@@ -35,7 +35,7 @@ char			*get_format_string(void)
 	else if (t == 'x')
 		treat_ux(&format_str, g_base_16_x);
 	else if (t == 'X')
-		treat_ux(&format_str, g_base_16_X);
+		treat_ux(&format_str, g_base_16_lx);
 	else if (t == 'p')
 		treat_p(&format_str);
 	else if (t == 'd' || t == 'i')
@@ -64,7 +64,7 @@ void			parse(const char *format, char *str, size_t *len)
 			init();
 			while (read_flags(&format) || read_width(&format) ||
 			read_precision(&format))
-				; //바꾼부분
+				;
 			if (!(g_format->type = *(format++)))
 				break ;
 			str = get_format_string();
@@ -82,7 +82,7 @@ void			parse(const char *format, char *str, size_t *len)
 		}
 }
 
-int			ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
 	size_t res;
 
